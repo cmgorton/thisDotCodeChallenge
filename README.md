@@ -1,2 +1,0 @@
-# thisDotCodeChallenge
-Created with CodeSandbox
