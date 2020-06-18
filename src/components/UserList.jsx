@@ -2,15 +2,12 @@ import React from "react";
 
 import User from "./User";
 
-const UserList = ({ response, loading }) => {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+const UserList = React.memo(({ response}) => {
   return (
     <div className="user-list">
       {response.map(item=> {
         return (
-          <a className="user-list__link" href={item.html_url}>
+          <a key={item.id} className="user-list__link" href={item.html_url}>
           <User
             key={item.id}
             id={item.id}
@@ -26,5 +23,5 @@ const UserList = ({ response, loading }) => {
       
     </div>
   );
-};
+});
 export default UserList;

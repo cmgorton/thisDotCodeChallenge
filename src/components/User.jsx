@@ -1,7 +1,7 @@
 import React from "react";
 import Details from "./Details";
 
-const User = props => {
+const User = React.memo(props => {
   return (
     <div className="user " key={props.id}>
       <a className="user__name" href={props.url}>{props.title}</a>
@@ -9,5 +9,5 @@ const User = props => {
       <Details details={props.details}/>
     </div>
   );
-};
+});
 export default User;

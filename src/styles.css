@@ -8,7 +8,7 @@
   --white200: rgb(250, 251, 252);
   --green100: rgb(45, 186, 78);
   --orange100: #dd8a22;
-
+  --orange200: #905a18;
   /* ==== transitions ==== */
   --transition: all 0.2s ease-in;
 }
@@ -140,7 +140,7 @@ input {
   margin: 1rem;
 }
 .details__em {
-  color: var(--orange100);
+  color: var(--orange200);
   font-weight: 500;
 }
 .user-list__link {
