@@ -11,13 +11,13 @@ function App() {
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
-  
+
 
   const handleInputChange = event => {
     setQuery(event.target.value);
   };
   useEffect(() => {
-    const data = localStorage.getItem("users");
+    const data = localStorage.getItem("users", "results");
     if (data) {
       setResponse(JSON.parse(data));
     }
@@ -25,27 +25,28 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(response));
+    localStorage.setItem("results", JSON.stringify(count));
   });
 
 
   const formSubmit = e => {
     e.preventDefault()
     axios.get(`https://api.github.com/search/users?q=${query}&page=2&limit=14`)
-    .then(response => {
-      const data = response.data.items;
-      setResponse(data);
-      setCount(response.data.total_count);
-    })
-     .catch(errors => {
-      console.error(errors);
-    });
-  } 
-  
+      .then(response => {
+        const data = response.data.items;
+        setResponse(data);
+        setCount(response.data.total_count);
+      })
+      .catch(errors => {
+        console.error(errors);
+      });
+  }
+
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = response.slice(indexOfFirstPost, indexOfLastPost);
-  
+
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -53,13 +54,13 @@ function App() {
     <div className="main">
       <h1>Github Search</h1>
       <Pagination
-        currentPage = {currentPage}
+        currentPage={currentPage}
         postsPerPage={postsPerPage}
         totalPosts={response.length}
         paginate={paginate}
       />
       <div className="cat">
-        <Octocat/>
+        <Octocat />
       </div>
       <form onSubmit={formSubmit}>
         <input

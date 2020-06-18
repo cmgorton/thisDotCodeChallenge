@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const Pagination = React.memo(({ currentPage, postsPerPage, totalPosts, paginate}) => {
+const Pagination = ({ currentPage, postsPerPage, totalPosts, paginate }) => {
   const [prev, setPrev] = useState(1);
   const [next, setNext] = useState(0);
   const pageNumbers = [];
@@ -32,5 +32,5 @@ const Pagination = React.memo(({ currentPage, postsPerPage, totalPosts, paginate
       </button>
     </nav>
   );
-});
+};
 export default Pagination;
