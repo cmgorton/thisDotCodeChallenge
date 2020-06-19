@@ -11,7 +11,6 @@ function App() {
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
-
   const handleInputChange = event => {
     setQuery(event.target.value);
   };
